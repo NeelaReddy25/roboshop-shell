@@ -45,7 +45,7 @@ VALIDATE $? "Starting rabbitmq server"
 id roboshop &>>$LOGFILE
 if [ $? -ne 0 ]
 then
-    useradd roboshop roboshop123 &>>$LOGFILE
+    useradd  -D roboshop roboshop123 &>>$LOGFILE
     VALIDATE $? "Creating roboshop user"
 else
     echo -e "Roboshop user already created...$Y SKIPPING $N"
