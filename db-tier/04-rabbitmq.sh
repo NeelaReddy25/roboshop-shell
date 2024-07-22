@@ -42,7 +42,7 @@ VALIDATE $? "Enabling rabbitmq server"
 systemctl start rabbitmq-server &>>$LOGFILE
 VALIDATE $? "Starting rabbitmq server"
 
-id roboshop roboshop123 &>>$LOGFILE
+id roboshop &>>$LOGFILE
 if [ $? -ne 0 ]
 then
     useradd roboshop roboshop123 &>>$LOGFILE
