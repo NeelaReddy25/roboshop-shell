@@ -44,4 +44,4 @@ cp /home/ec2-user/roboshop-shell/db-tier/mongod.conf /etc/mongod.conf &>>$LOGFIL
 VALIDATE $? "Update listen address"
 
 systemctl restart mongod &>>$LOGFILE
-VALIDATE $? "Restart mongod"
+VALIDATE $? "Restarting mongod"
