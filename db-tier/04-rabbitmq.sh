@@ -42,10 +42,10 @@ VALIDATE $? "Enabling rabbitmq server"
 systemctl start rabbitmq-server &>>$LOGFILE
 VALIDATE $? "Starting rabbitmq server"
 
-id roboshop &>>$LOGFILE
+rabbitmqctl add_user roboshop roboshop123&>>$LOGFILE
 if [ $? -ne 0 ]
 then
-    add_user roboshop &>>$LOGFILE
+    rabbitmqctl add_user roboshop roboshop123 &>>$LOGFILE
     VALIDATE $? "Creating roboshop user"
 else
     echo -e "Roboshop user already created...$Y SKIPPING $N"
