@@ -79,8 +79,3 @@ VALIDATE $? "Install mongodb-client"
 
 mongosh --host mongodb.neelareddy.store </app/schema/catalogue.js &>>$LOGFILE
 VALIDATE $? "Schema loading"
-
-
-
-
-
