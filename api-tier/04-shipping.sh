@@ -73,7 +73,7 @@ VALIDATE $? "Starting shipping"
 dnf install mysql -y &>>$LOGFILE
 VALIDATE $? "Installing MySQL"
 
-mysql -h <MYSQL-SERVER-IPADDRESS> -uroot -p${mysql_root_password} < /app/schema/shipping.sql 
+mysql -h mysql.neelareddy.store -uroot -p${mysql_root_password} < /app/schema/shipping.sql 
 VALIDATE $? "Schema loading"
 
 systemctl restart shipping &>>$LOGFILE
