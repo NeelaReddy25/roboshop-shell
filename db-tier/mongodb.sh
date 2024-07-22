@@ -40,7 +40,7 @@ VALIDATE $? "Enabling mongod"
 systemctl start mongod &>>$LOGFILE
 VALIDATE $? "Starting mongod"
 
-cp /home/ec2-user/roboshop-shell/db-tier/mongod.conf /etc/mongod.conf&>>$LOGFILE
+cp /home/ec2-user/roboshop-shell/db-tier/mongod.conf /etc/mongod.conf &>>$LOGFILE
 VALIDATE $? "Update listen address"
 
 systemctl restart mongod &>>$LOGFILE
