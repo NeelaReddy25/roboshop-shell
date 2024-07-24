@@ -41,7 +41,7 @@ aws route53 change-resource-record-sets \
         "Comment": "Testing creating an A record set",
         "Changes": [
             {
-                "Action": "UPSERT",
+                "Action": "DELETE",
                 "ResourceRecordSet": {
                     "Name": "'"$ENV"'.neelareddy.store",
                     "Type": "A",
