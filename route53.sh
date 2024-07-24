@@ -8,7 +8,7 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
-ENV="catalogue"
+ENV="mongodb"
 IP="172.31.33.0"
 # NAME="catalogue.neelareddy.store"
 # VALUE="172.31.33.0"
@@ -41,7 +41,7 @@ aws route53 change-resource-record-sets \
         "Comment": "Testing creating an A record set",
         "Changes": [
             {
-                "Action": "CREATE",
+                "Action": "UPSERT",
                 "ResourceRecordSet": {
                     "Name": "'"$ENV"'.neelareddy.store",
                     "Type": "A",
