@@ -8,12 +8,14 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
-NAME="catalogue.neelareddy.store"
-VALUE="172.31.33.0"
-HOSTED="Z001712433NLPH2AI8HH5"
-ACTION="CREATE"
-TYPE="A"
-TTL="1"
+ENV="catalogue"
+IP="172.31.33.0"
+# NAME="catalogue.neelareddy.store"
+# VALUE="172.31.33.0"
+# HOSTED="Z001712433NLPH2AI8HH5"
+# ACTION="CREATE"
+# TYPE="A"
+# TTL="1"
 
 VALIDATE(){
     if [ $1 -ne 0 ] 
@@ -33,29 +35,29 @@ else
     echo "You are super user."
 fi
 
-# /usr/local/bin/aws route53 change-resource-record-sets \
-#     --hosted-zone-id Z001712433NLPH2AI8HH5 \
-#     --change-batch '{
-#         "Comment": "Testing creating an A record set",
-#         "Changes": [
-#             {
-#                 "Action": "CREATE", "UPDATE",
-#                 "ResourceRecordSet": {
-#                     "Name": "'"$ENV"'.neelareddy.store",
-#                     "Type": "A",
-#                     "TTL": 1,
-#                     "ResourceRecords": [
-#                         {
-#                             "Value": "'"$IP"'"
-#                         }
-#                     ]
-#                 }
-#             }
-#         ]
-#     }'
-
-
 aws route53 change-resource-record-sets \
-  --hosted-zone-id $HOSTED \
-  --change-batch '{"Changes":[{"Action":"$ACTION","ResourceRecordSet":{"Name":"$NAME","Type":"$TYPE","TTL":$TTL,"ResourceRecords":[{"Value":"$VALUE"}]}}]}' &>>$LOGFILE
-VALIDATE $? "Creating the r53 record"
+    --hosted-zone-id Z001712433NLPH2AI8HH5 \
+    --change-batch '{
+        "Comment": "Testing creating an A record set",
+        "Changes": [
+            {
+                "Action": "CREATE",
+                "ResourceRecordSet": {
+                    "Name": "'"$ENV"'.neelareddy.store",
+                    "Type": "A",
+                    "TTL": 1,
+                    "ResourceRecords": [
+                        {
+                            "Value": "'"$IP"'"
+                        }
+                    ]
+                }
+            }
+        ]
+    }'
+
+
+# aws route53 change-resource-record-sets \
+#   --hosted-zone-id $HOSTED \
+#   --change-batch '{"Changes":[{"Action":"$ACTION","ResourceRecordSet":{"Name":"$NAME","Type":"$TYPE","TTL":$TTL,"ResourceRecords":[{"Value":"$VALUE"}]}}]}' &>>$LOGFILE
+# VALIDATE $? "Creating the r53 record"
