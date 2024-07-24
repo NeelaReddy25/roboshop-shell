@@ -10,7 +10,7 @@ Y="\e[33m"
 N="\e[0m"
 NAME="catalogue.neelareddy.store"
 VALUE="172.31.33.0"
-HOSTED-ZONE-ID="Z001712433NLPH2AI8HH5"
+HOSTED="Z001712433NLPH2AI8HH5"
 ACTION="CREATE"
 TYPE="A"
 TTL="1"
@@ -56,6 +56,6 @@ fi
 
 
 aws route53 change-resource-record-sets \
-  --hosted-zone-id $HOSTED-ZONE-ID \
+  --hosted-zone-id $HOSTED \
   --change-batch '{"Changes":[{"Action":"$ACTION","ResourceRecordSet":{"Name":"$NAME","Type":"$TYPE","TTL":$TTL,"ResourceRecords":[{"Value":"$VALUE"}]}}]}' &>>$LOGFILE
 VALIDATE $? "Creating the r53 record"
