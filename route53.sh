@@ -55,5 +55,5 @@ IP="172.31.44.9"
 
 aws route53 change-resource-record-sets \
   --hosted-zone-id Z001712433NLPH2AI8HH5 \
-  --change-batch '{"Changes":[{"Action":"CREATE", "UPDATE","ResourceRecordSet":{"Name":"catalogue.neelareddy.store","Type":"A","TTL":1,"ResourceRecords":[{"Value":"172.31.33.0"}]}}]}' &>>$LOGFILE
+  --change-batch '{"Changes":[{"Action":"CREATE", "UPSERT","ResourceRecordSet":{"Name":"catalogue.neelareddy.store","Type":"A","TTL":1,"ResourceRecords":[{"Value":"172.31.33.0"}]}}]}' &>>$LOGFILE
 VALIDATE $? "Creating the r53 record"
