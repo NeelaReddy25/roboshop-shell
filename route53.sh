@@ -8,8 +8,12 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
-ENV="mongodb"
-IP="172.31.44.9"
+NAME="catalogue.neelareddy.store"
+VALUE="172.31.33.0"
+HOSTED-ZONE-ID="Z001712433NLPH2AI8HH5"
+ACTION="CREATE"
+TYPE="A"
+TTL="1"
 
 VALIDATE(){
     if [ $1 -ne 0 ] 
@@ -52,6 +56,6 @@ fi
 
 
 aws route53 change-resource-record-sets \
-  --hosted-zone-id Z001712433NLPH2AI8HH5 \
-  --change-batch '{"Changes":[{"Action":"DELETE","ResourceRecordSet":{"Name":"catalogue.neelareddy.store","Type":"A","TTL":1,"ResourceRecords":[{"Value":"172.31.33.0"}]}}]}' &>>$LOGFILE
+  --hosted-zone-id $HOSTED-ZONE-ID \
+  --change-batch '{"Changes":[{"Action":"$ACTION","ResourceRecordSet":{"Name":"$NAME","Type":"$TYPE","TTL":$TTL,"ResourceRecords":[{"Value":"$VALUE"}]}}]}' &>>$LOGFILE
 VALIDATE $? "Creating the r53 record"
